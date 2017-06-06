@@ -15,9 +15,9 @@ RUN pip3 install git+https://github.com/souptc/keras.git
 # CNTK w/ 1bit-SGD
 RUN pip3 install https://cntk.ai/PythonWheel/GPU-1bit-SGD/cntk-2.0-cp35-cp35m-linux_x86_64.whl
 
-# Set CNTK backend for Keras
-RUN export KERAS_BACKEND=cntk
-
 # Create folder for Keras files
 WORKDIR /keras
 VOLUME /keras
+
+# Set CNTK backend for Keras
+ENV KERAS_BACKEND=cntk
