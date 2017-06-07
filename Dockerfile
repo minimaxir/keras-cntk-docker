@@ -9,11 +9,11 @@ RUN pip3 install --upgrade pip
 RUN pip3 install tensorflow-gpu
 RUN pip3 install numpy pandas sklearn h5py
 
-# Keras w/ CNTK
-RUN pip3 install git+https://github.com/souptc/keras.git
+# Keras
+RUN pip3 install git+https://github.com/fchollet/keras.git
 
-# CNTK w/ 1bit-SGD
-RUN pip3 install https://cntk.ai/PythonWheel/GPU-1bit-SGD/cntk-2.0-cp35-cp35m-linux_x86_64.whl
+# CNTK
+RUN pip3 install https://cntk.ai/PythonWheel/GPU/cntk-2.0-cp35-cp35m-linux_x86_64.whl
 
 # Create folder for Keras i/o
 WORKDIR /keras
