@@ -5,6 +5,8 @@ Durgesh Mankekar's minimal [keras/jupyter container](https://github.com/durgeshm
 
 This container contains CNTK, TensorFlow, and Keras. When Keras is run in the container, CNTK will be the selected backend by default. Only recommended to run on a GPU instance.
 
+[Container on Docker Hub](https://hub.docker.com/r/minimaxir/keras-cntk/)
+
 ## Usage
 
 To set up the CUDA+container drivers from scratch on the GPU instance, run these commands:
@@ -12,8 +14,8 @@ To set up the CUDA+container drivers from scratch on the GPU instance, run these
 ```sh
 curl -O -s https://raw.githubusercontent.com/minimaxir/keras-cntk-docker/master/deps_nvidia_docker.sh
 sudo sh deps_nvidia_docker.sh
+sudo docker pull minimaxir/keras-cntk
 ```
-
 You may need to run the script again after a few days (due to a GPU update on host hardware)
 
 To run a deep learning script in the container:
