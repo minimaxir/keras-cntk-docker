@@ -1,5 +1,7 @@
 # keras-cntk-docker
 
+![](cntk_keras.gif)
+
 Docker container for keras + cntk intended for nvidia-docker. Based off of 
 Durgesh Mankekar's minimal [keras/jupyter container](https://github.com/durgeshm/dockerfiles/tree/master/jupyter-keras-gpu) + corresponding [blog post](https://medium.com/google-cloud/containerized-jupyter-notebooks-on-gpu-on-google-cloud-8e86ef7f31e9).
 
@@ -14,7 +16,6 @@ To set up the CUDA+container drivers from scratch on the GPU instance, run these
 ```sh
 curl -O -s https://raw.githubusercontent.com/minimaxir/keras-cntk-docker/master/deps_nvidia_docker.sh
 sudo sh deps_nvidia_docker.sh
-sudo docker pull minimaxir/keras-cntk
 ```
 You may need to run the script again after a few days (due to a GPU update on host hardware)
 
