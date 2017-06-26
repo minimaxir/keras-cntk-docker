@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y wget ca-certificates \
 
 RUN pip3 install --upgrade pip
 RUN pip3 install tensorflow-gpu
-RUN pip3 install numpy pandas sklearn h5py
+RUN pip3 install numpy pandas sklearn h5py jupyter
 
 # Keras
 RUN pip3 install git+https://github.com/fchollet/keras.git
