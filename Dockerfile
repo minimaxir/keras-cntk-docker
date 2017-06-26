@@ -1,4 +1,4 @@
-FROM nvidia/cuda:8.0-cudnn5-devel-ubuntu16.04
+FROM nvidia/cuda:8.0-cudnn6-devel-ubuntu16.04
 MAINTAINER "Max Woolf"
 
 RUN apt-get update && apt-get install -y wget ca-certificates \
@@ -7,13 +7,16 @@ RUN apt-get update && apt-get install -y wget ca-certificates \
 
 RUN pip3 install --upgrade pip
 RUN pip3 install tensorflow-gpu
-RUN pip3 install numpy pandas sklearn h5py jupyter
+RUN pip3 install numpy pandas sklearn matplotlib seaborn jupyter pyyaml h5py
 
 # Keras
 RUN pip3 install git+https://github.com/fchollet/keras.git
 
 # CNTK
 RUN pip3 install https://cntk.ai/PythonWheel/GPU/cntk-2.0-cp35-cp35m-linux_x86_64.whl
+
+# Jupyter and Tensorboard ports
+EXPOSE 8888 6006
 
 # Create folder for Keras i/o
 WORKDIR /keras
