@@ -33,5 +33,3 @@ ENV KERAS_BACKEND=cntk
 # https://askubuntu.com/a/601498
 RUN apt-get clean && apt-get -y update && apt-get install -y locales && locale-gen en_US.UTF-8
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
-
-CMD ["/run_jupyter.sh", "--allow-root"]
