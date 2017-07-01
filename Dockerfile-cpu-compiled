@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y wget ca-certificates \
     pkg-config zip g++ zlib1g-dev unzip
 
 RUN pip3 --no-cache-dir install --upgrade pip
+RUN pip3 --no-cache-dir install numpy pandas sklearn matplotlib seaborn jupyter pyyaml h5py ipykernel
 
 # Compile TensorFlow w/ CPU instructions
 # https://github.com/tensorflow/tensorflow/blob/master/tensorflow/tools/docker/Dockerfile.devel
@@ -36,8 +37,6 @@ RUN tensorflow/tools/ci_build/builds/configured CPU \
     pip --no-cache-dir install --upgrade /tmp/pip/tensorflow-*.whl && \
     rm -rf /tmp/pip && \
     rm -rf /root/.cache
-
-RUN pip3 --no-cache-dir install numpy pandas sklearn matplotlib seaborn jupyter pyyaml h5py ipykernel
 
 # Keras
 RUN pip3 install git+https://github.com/fchollet/keras.git
