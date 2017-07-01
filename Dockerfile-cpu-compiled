@@ -4,7 +4,8 @@ MAINTAINER "Max Woolf"
 RUN apt-get update && apt-get install -y wget ca-certificates \
     git curl vim python3-dev python3-pip \
     libfreetype6-dev libpng12-dev libhdf5-dev openmpi-bin \
-    pkg-config zip g++ zlib1g-dev unzip
+    pkg-config zip g++ zlib1g-dev unzip build-essential \
+    openjdk-8-jdk openjdk-8-jre-headless python-dev
 
 RUN pip3 --no-cache-dir install --upgrade pip
 RUN pip3 --no-cache-dir install numpy pandas sklearn matplotlib seaborn jupyter pyyaml h5py ipykernel
