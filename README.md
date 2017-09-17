@@ -32,6 +32,12 @@ To run TensorFlow on Keras in the container instead of CNTK, add a `-e KERAS_BAC
 sudo nvidia-docker run -it --rm -v $(pwd)/:/keras --name keras -e KERAS_BACKEND='tensorflow' minimaxir/keras-cntk python3 <x>.py
 ```
 
+To run a Jupyter Notebook in the container (where invoking Keras in a notebook will use the CNTK backend):
+
+```sh
+sudo nvidia-docker run -it --rm -p 8888:8888 -v $(pwd):/keras --name jupyter minimaxir/keras-cntk jupyter notebook --allow-root
+```
+
 ## Maintainer
 
 Max Woolf ([@minimaxir](http://minimaxir.com))
