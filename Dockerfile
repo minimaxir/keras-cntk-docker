@@ -2,7 +2,7 @@ FROM microsoft/cntk:2.2-gpu-python3.5-cuda8.0-cudnn6.0
 MAINTAINER "Max Woolf"
 
 RUN apt-get update && apt-get install -y wget ca-certificates \
-    git curl vim python3-dev python3-pip \
+    git curl vim \
     libfreetype6-dev libpng12-dev libhdf5-dev openmpi-bin
 
 RUN pip3 install --upgrade pip
