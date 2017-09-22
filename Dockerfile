@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y wget ca-certificates \
     git curl vim \
     libfreetype6-dev libpng12-dev libhdf5-dev openmpi-bin
 
-
+COPY get-pip.py /
 RUN python3 get-pip.py
 RUN pip3 --no-cache-dir install tensorflow-gpu
 RUN pip3 --no-cache-dir install numpy pandas sklearn matplotlib seaborn jupyter pyyaml h5py ipykernel
