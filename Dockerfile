@@ -1,4 +1,4 @@
-FROM microsoft/cntk:2.2-gpu-python3.5-cuda8.0-cudnn6.0
+FROM nvidia/cuda:8.0-cudnn6-devel-ubuntu16.04
 MAINTAINER "Max Woolf"
 
 RUN apt-get update && apt-get install -y wget ca-certificates \
@@ -14,7 +14,7 @@ RUN pip3 --no-cache-dir install numpy pandas sklearn matplotlib seaborn jupyter 
 RUN pip3 install git+https://github.com/fchollet/keras.git
 
 # CNTK
-# RUN pip3 install https://cntk.ai/PythonWheel/GPU/cntk-2.2-cp35-cp35m-linux_x86_64.whl
+RUN pip3 install https://cntk.ai/PythonWheel/GPU/cntk-2.2-cp35-cp35m-linux_x86_64.whl
 
 # textgenrnn (must be installed after Keras)
 RUN pip3 --no-cache-dir install textgenrnn reactionrnn
