@@ -1,4 +1,4 @@
-FROM nvidia/cuda:8.0-cudnn7-runtime-ubuntu16.04
+FROM nvidia/cuda:8.0-cudnn6-runtime-ubuntu16.04
 MAINTAINER "Max Woolf"
 
 RUN apt-get update && apt-get install -y wget ca-certificates \
