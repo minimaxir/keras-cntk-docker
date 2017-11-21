@@ -15,7 +15,7 @@ RUN pip3 --no-cache-dir install numpy pandas sklearn matplotlib seaborn jupyter 
 RUN echo "startup --batch" >>/etc/bazel.bazelrc
 RUN echo "build --spawn_strategy=standalone --genrule_strategy=standalone" \
     >>/etc/bazel.bazelrc
-ENV BAZEL_VERSION 0.5.0
+ENV BAZEL_VERSION 0.7.0
 WORKDIR /
 RUN mkdir /bazel && \
     cd /bazel && \
