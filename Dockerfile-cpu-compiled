@@ -15,7 +15,7 @@ RUN pip3 --no-cache-dir install numpy pandas sklearn matplotlib seaborn jupyter 
 RUN echo "startup --batch" >>/etc/bazel.bazelrc
 RUN echo "build --spawn_strategy=standalone --genrule_strategy=standalone" \
     >>/etc/bazel.bazelrc
-ENV BAZEL_VERSION 0.7.0
+ENV BAZEL_VERSION 0.5.4
 WORKDIR /
 RUN mkdir /bazel && \
     cd /bazel && \
@@ -38,7 +38,7 @@ ENV CI_BUILD_PYTHON python3
 
 RUN tensorflow/tools/ci_build/builds/configured CPU \
     bazel build -c opt --cxxopt="-D_GLIBCXX_USE_CXX11_ABI=0" \
-        --copt=-mavx --copt=-mavx2 --copt=-mfma --copt=-mfpmath=both --copt=-msse4.1 --copt=-msse4.2 \
+        --copt=-mavx --copt=-mavx2 --copt=-mfma --copt=-mfpmath=both --copt=-msse4.1 --copt=-msse4.2 --copt=-march="haswell" \
         tensorflow/tools/pip_package:build_pip_package && \
     bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/pip && \
     pip --no-cache-dir install --upgrade /tmp/pip/tensorflow-*.whl && \
