@@ -41,12 +41,20 @@ echo "\nChecking nvidia-docker ..."
 if ! [ -x "$(command -v nvidia-docker)" ]; then
   echo "nvidia-docker is not installled."
 
-  wget -P /tmp https://github.com/NVIDIA/nvidia-docker/releases/download/v2.0.2/nvidia-docker_2.0.2_amd64.deb
-  dpkg -i /tmp/nvidia-docker*.deb && rm /tmp/nvidia-docker*.deb
+  # https://nvidia.github.io/nvidia-docker/
+  curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | \
+  sudo apt-key add -
+  curl -s -L https://nvidia.github.io/nvidia-docker/ubuntu16.04/amd64/nvidia-docker.list | \
+  sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+  sudo apt-get update
+
+  # https://github.com/NVIDIA/nvidia-docker/wiki/Installation-(version-2.0)
+  sudo apt-get install nvidia-docker2
+  sudo pkill -SIGHUP dockerd
 
   echo "\nInstalled nvidia-docker."
 else 
   echo "nvidia-docker is already installed."
 fi
 echo "\nAll dependencies are installed."
-echo "\nTry running: \n\tsudo nvidia-docker run --rm nvidia/cuda nvidia-smi\n"
+echo "\nTry running: \n\tdocker run --runtime=nvidia --rm nvidia/cuda nvidia-smi\n"

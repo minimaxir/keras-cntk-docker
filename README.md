@@ -21,7 +21,7 @@ You may need to run the script again after a few days (due to a GPU update on ho
 
 To run a deep learning script in the container:
 ```sh
-sudo nvidia-docker run -it --rm -v $(pwd)/:/keras --name keras minimaxir/keras-cntk python3 <x>.py
+sudo docker run --runtime=nvidia run -it --rm -v $(pwd)/:/keras --name keras minimaxir/keras-cntk python3 <x>.py
 ```
 
 Where `<x>` is the Python script on the host server.
@@ -29,13 +29,13 @@ Where `<x>` is the Python script on the host server.
 To run TensorFlow on Keras in the container instead of CNTK, add a `-e KERAS_BACKEND='tensorflow'` flag:
 
 ```sh
-sudo nvidia-docker run -it --rm -v $(pwd)/:/keras --name keras -e KERAS_BACKEND='tensorflow' minimaxir/keras-cntk python3 <x>.py
+sudo docker run --runtime=nvidia run -it --rm -v $(pwd)/:/keras --name keras -e KERAS_BACKEND='tensorflow' minimaxir/keras-cntk python3 <x>.py
 ```
 
 To run a Jupyter Notebook in the container (where invoking Keras in a notebook will use the CNTK backend):
 
 ```sh
-sudo nvidia-docker run -it --rm -p 8888:8888 -v $(pwd):/keras --name jupyter minimaxir/keras-cntk jupyter notebook --allow-root
+sudo docker run --runtime=nvidia -it --rm -p 8888:8888 -v $(pwd):/keras --name jupyter minimaxir/keras-cntk jupyter notebook --allow-root
 ```
 
 ## Maintainer
