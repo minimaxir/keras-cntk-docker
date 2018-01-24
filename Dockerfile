@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y wget ca-certificates \
     libfreetype6-dev libpng12-dev libhdf5-dev openmpi-bin
 
 RUN pip3 install --upgrade pip
-RUN pip3 --no-cache-dir install tensorflow==1.5.0rc1
+RUN pip3 --no-cache-dir install tensorflow-gpu==1.5.0rc1
 RUN pip3 --no-cache-dir install numpy pandas sklearn matplotlib seaborn jupyter pyyaml h5py ipykernel
 
 # Keras
