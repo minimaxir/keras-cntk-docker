@@ -1,4 +1,4 @@
-FROM nvidia/cuda:8.0-cudnn6-runtime-ubuntu16.04
+FROM nvidia/cuda:9.1-cudnn7-runtime-ubuntu16.04
 MAINTAINER "Max Woolf"
 
 RUN apt-get update && apt-get install -y wget ca-certificates \
@@ -6,14 +6,14 @@ RUN apt-get update && apt-get install -y wget ca-certificates \
     libfreetype6-dev libpng12-dev libhdf5-dev openmpi-bin
 
 RUN pip3 install --upgrade pip
-RUN pip3 --no-cache-dir install tensorflow-gpu
+RUN pip3 --no-cache-dir install tensorflow_gpu-1.5.0rc1-cp35-cp35m-manylinux1_x86_64.whl
 RUN pip3 --no-cache-dir install numpy pandas sklearn matplotlib seaborn jupyter pyyaml h5py ipykernel
 
 # Keras
 RUN pip3 install keras
 
 # CNTK
-RUN pip3 install https://cntk.ai/PythonWheel/GPU/cntk-2.2-cp35-cp35m-linux_x86_64.whl
+RUN pip3 install https://cntk.ai/PythonWheel/GPU/cntk-2.3-cp35-cp35m-linux_x86_64.whl
 
 # textgenrnn (must be installed after Keras)
 # RUN pip3 --no-cache-dir install textgenrnn reactionrnn
