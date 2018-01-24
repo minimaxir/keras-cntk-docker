@@ -15,8 +15,8 @@ if ! nvidia-smi ; then
   apt-get update
   apt-get install -y curl build-essential
 
-  curl -O -s http://us.download.nvidia.com/XFree86/Linux-x86_64/384.98/NVIDIA-Linux-x86_64-384.98.run
-  sh ./NVIDIA-Linux-x86_64-384.98.run -a --ui=none --no-x-check && rm NVIDIA-Linux-x86_64-384.98.run
+  curl -O -s http://us.download.nvidia.com/XFree86/Linux-x86_64/390.12/NVIDIA-Linux-x86_64-390.12.run
+  sh ./NVIDIA-Linux-x86_64-390.12.run -a --ui=none --no-x-check && rm NVIDIA-Linux-x86_64-390.12.run
 
   echo "\nInstalled NVIDIA drivers."
 else
@@ -41,7 +41,7 @@ echo "\nChecking nvidia-docker ..."
 if ! [ -x "$(command -v nvidia-docker)" ]; then
   echo "nvidia-docker is not installled."
 
-  wget -P /tmp https://github.com/NVIDIA/nvidia-docker/releases/download/v1.0.1/nvidia-docker_1.0.1-1_amd64.deb
+  wget -P /tmp https://github.com/NVIDIA/nvidia-docker/releases/download/v2.0.2/nvidia-docker_2.0.2_amd64.deb
   dpkg -i /tmp/nvidia-docker*.deb && rm /tmp/nvidia-docker*.deb
 
   echo "\nInstalled nvidia-docker."
