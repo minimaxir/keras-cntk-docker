@@ -38,6 +38,20 @@ To run a Jupyter Notebook in the container (where invoking Keras in a notebook w
 sudo docker run --runtime=nvidia -it --rm -p 8888:8888 -v $(pwd):/keras --name jupyter minimaxir/keras-cntk jupyter notebook --allow-root
 ```
 
+## Run TensorBoard and Jupyter
+
+Running both TensorBoard and Jupyter in the same container requires starting up TensorBoard in the background, then running Jupyter in the foreground:
+
+```sh
+sudo docker run --runtime=nvidia -d --rm -p 8888:8888 -p 6006:6006 -v $(pwd):/keras --name jupyter -e KERAS_BACKEND='tensorflow' minimaxir/keras-cntk tensorboard --logdir=/keras/logs
+sudo docker exec -it jupyter bash
+jupyter notebook --allow-root
+```
+
+TensorBoard will be available on Port 6006; you'll need to use the [TensorBoard callback](https://keras.io/callbacks/#tensorboard) in Keras to make results visible in TensorBoard.
+
+Note that with this approach, killing the Jupyter console will not kill the container; you have to `exit` bash and run `sudo docker kill jupyter`.
+
 ## Maintainer
 
 Max Woolf ([@minimaxir](http://minimaxir.com))
