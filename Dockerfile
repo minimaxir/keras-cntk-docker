@@ -7,13 +7,13 @@ RUN apt-get update && apt-get install -y wget ca-certificates \
 
 RUN pip3 install --upgrade pip
 RUN pip3 --no-cache-dir install tensorflow-gpu
-RUN pip3 --no-cache-dir install numpy pandas sklearn matplotlib seaborn jupyter pyyaml h5py ipykernel pydot graphviz
+RUN pip3 --no-cache-dir install numpy pandas sklearn matplotlib seaborn jupyter pyyaml h5py ipykernel pydot graphviz scikit-image scipy cython
 
 # Keras
 RUN pip3 install keras
 
 # CNTK
-RUN pip3 install https://cntk.ai/PythonWheel/GPU/cntk-2.4-cp35-cp35m-linux_x86_64.whl
+RUN pip3 install https://cntk.ai/PythonWheel/GPU/cntk-2.5-cp35-cp35m-linux_x86_64.whl
 
 # textgenrnn (must be installed after Keras)
 # RUN pip3 --no-cache-dir install textgenrnn reactionrnn
