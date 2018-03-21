@@ -14,7 +14,7 @@ RUN pip3 --no-cache-dir install numpy pandas sklearn matplotlib seaborn \
 RUN pip3 install keras
 
 # CNTK
-RUN pip3 install https://cntk.ai/PythonWheel/GPU/cntk_gpu-2.5-cp35-cp35m-win_amd64.whl
+RUN pip3 install https://cntk.ai/PythonWheel/GPU/cntk_gpu-2.5-cp35-cp35m-linux_x86_64.whl
 
 # textgenrnn (must be installed after Keras)
 # RUN pip3 --no-cache-dir install textgenrnn reactionrnn
