@@ -1,10 +1,21 @@
-FROM nvidia/cuda:9.0-cudnn7-runtime-ubuntu16.04
+FROM nvidia/cuda:9.0-base-runtime-ubuntu16.04
 MAINTAINER "Max Woolf"
 
 RUN apt-get update && apt-get install -y wget ca-certificates \
     git curl vim python3-dev python3-pip libopencv-dev python-opencv \
-    libfreetype6-dev libpng12-dev libhdf5-dev openmpi-bin
-
+    libfreetype6-dev libpng12-dev libhdf5-dev openmpi-bin \
+    cuda-command-line-tools-9-0 \
+    cuda-cublas-9-0 \
+    cuda-cufft-9-0 \
+    cuda-curand-9-0 \
+    cuda-cusolver-9-0 \
+    cuda-cusparse-9-0 \
+    libcudnn7=7.0.5.15-1+cuda9.0 \
+    && \
+    rm -rf /var/lib/apt/lists/* && \
+    find /usr/local/cuda-9.0/lib64/ -type f -name 'lib*_static.a' -not -name 'libcudart_static.a' -delete && \
+    rm /usr/lib/x86_64-linux-gnu/libcudnn_static_v7.a
+    
 RUN pip3 install --upgrade pip
 RUN pip3 --no-cache-dir install tensorflow-gpu
 RUN pip3 --no-cache-dir install numpy pandas sklearn matplotlib seaborn \
@@ -14,7 +25,7 @@ RUN pip3 --no-cache-dir install numpy pandas sklearn matplotlib seaborn \
 RUN pip3 install keras
 
 # CNTK
-RUN pip3 install https://cntk.ai/PythonWheel/GPU/cntk_gpu-2.5-cp35-cp35m-linux_x86_64.whl
+RUN pip3 install https://cntk.ai/PythonWheel/GPU-1bit-SGD/cntk-2.4-cp35-cp35m-linux_x86_64.whl
 
 # textgenrnn (must be installed after Keras)
 # RUN pip3 --no-cache-dir install textgenrnn reactionrnn
