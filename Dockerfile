@@ -12,9 +12,7 @@ RUN apt-get update && apt-get install -y wget ca-certificates \
     cuda-cusparse-9-0 \
     libcudnn7=7.0.5.15-1+cuda9.0 \
     && \
-    rm -rf /var/lib/apt/lists/* && \
-    find /usr/local/cuda-9.0/lib64/ -type f -name 'lib*_static.a' -not -name 'libcudart_static.a' -delete && \
-    rm /usr/lib/x86_64-linux-gnu/libcudnn_static_v7.a
+    rm -rf /var/lib/apt/lists/*
     
 RUN pip3 install --upgrade pip
 RUN pip3 --no-cache-dir install tensorflow-gpu
