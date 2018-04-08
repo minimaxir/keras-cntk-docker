@@ -52,6 +52,15 @@ TensorBoard will be available on Port 6006; you'll need to use the [TensorBoard 
 
 Note that with this approach, killing the Jupyter console will not kill the container; you have to `exit` bash and run `sudo docker kill jupyter`.
 
+## Error Note
+
+If you get a `docker: Error response from daemon: OCI runtime create failed:` error when creating the container, try reinstalling the GPU drivers on the host:
+
+```sh
+curl -O -s http://us.download.nvidia.com/XFree86/Linux-x86_64/384.111/NVIDIA-Linux-x86_64-384.111.run
+sudo sh ./NVIDIA-Linux-x86_64-384.111.run -a --ui=none --no-x-check && rm NVIDIA-Linux-x86_64-384.111.run
+```
+
 ## Maintainer
 
 Max Woolf ([@minimaxir](http://minimaxir.com))
