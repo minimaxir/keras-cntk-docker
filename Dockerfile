@@ -20,13 +20,13 @@ RUN pip3 --no-cache-dir install numpy pandas sklearn matplotlib seaborn \
     jupyter pyyaml h5py ipykernel pydot graphviz scikit-image scipy cython
 
 # Keras
-RUN pip3 install keras
+RUN pip3 --no-cache-dir install keras
 
 # CNTK
 RUN pip3 install https://cntk.ai/PythonWheel/GPU-1bit-SGD/cntk-2.4-cp35-cp35m-linux_x86_64.whl
 
 # textgenrnn (must be installed after Keras)
-# RUN pip3 --no-cache-dir install textgenrnn reactionrnn
+RUN pip3 --no-cache-dir install textgenrnn
 
 # Jupyter and Tensorboard ports
 EXPOSE 8888 6006
